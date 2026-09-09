@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>June Portfolio — Work</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/site-shell.css">
+    <link rel="stylesheet" href="../../assets/site-cursor.css">
+    <link rel="stylesheet" href="../../assets/site-fonts.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="use-site-cursor page-work">
+
+<div class="terminal-stage" id="terminalStage">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="top-header site-header">
+
+        <a class="left-title site-logo-link" href="../../index.html" aria-label="Return to landing page">
+            <img src="../../assets/logo.png" alt="June Portfolio">
+        </a>
+
+        <div class="right-status site-ready">
+            <span class="status-dot site-ready-dot" aria-hidden="true"></span>
+            READY
+        </div>
+
+    </header>
+
+
+    <!-- MAIN NAVIGATION -->
+
+    <nav class="homebar site-homebar" aria-label="Main navigation">
+        <a href="../../ABOUT/index.html" class="nav-item site-nav-item">
+            <span class="nav-num site-nav-num">01</span>
+            <span>YOU KNOW ME?</span>
+        </a>
+
+        <a href="index.html" class="nav-item site-nav-item active" aria-current="page">
+            <span class="nav-num site-nav-num">02</span>
+            <span class="font-pixel">WORKING FILES</span>
+        </a>
+
+        <a href="../../CONTACT/index.html" class="nav-item site-nav-item">
+            <span class="nav-num site-nav-num">03</span>
+            <span>TALK TO ME</span>
+        </a>
+
+        <span class="nav-marker site-nav-marker" aria-hidden="true"></span>
+    </nav>
+
+
+    <!-- =====================================================
+         CATEGORY WINDOWS
+    ====================================================== -->
+
+    <div class="category-system" id="categorySystem">
+        <button class="category-toggle" id="categoryToggle" type="button" aria-expanded="false" aria-controls="categoryDock">
+            <span class="burger-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>CATEGORIES</span>
+        </button>
+
+    <nav
+        class="category-dock"
+        id="categoryDock"
+        aria-label="Project categories"
+    >
+
+        <button
+            class="category-window active"
+            data-filter="all"
+        >
+            <span class="window-top">
+                <span>00</span>
+                <span>×</span>
+            </span>
+
+            <span class="window-name">
+                ALL
+            </span>
+        </button>
+
+
+        <button
+            class="category-window"
+            data-filter="web"
+        >
+            <span class="window-top">
+                <span>01</span>
+                <span>×</span>
+            </span>
+
+            <span class="window-name">
+                WEB & INTERACTIVE
+            </span>
+        </button>
+
+
+        <button
+            class="category-window"
+            data-filter="creative"
+        >
+            <span class="window-top">
+                <span>02</span>
+                <span>×</span>
+            </span>
+
+            <span class="window-name">
+                CREATIVE CODING
+            </span>
+        </button>
+
+
+        <button
+            class="category-window"
+            data-filter="ai"
+        >
+            <span class="window-top">
+                <span>03</span>
+                <span>×</span>
+            </span>
+
+            <span class="window-name">
+                AI PRODUCTION
+            </span>
+        </button>
+
+
+        <button
+            class="category-window"
+            data-filter="motion"
+        >
+            <span class="window-top">
+                <span>04</span>
+                <span>×</span>
+            </span>
+
+            <span class="window-name">
+                MOTION & ANIMATION
+            </span>
+        </button>
+
+
+        <button
+            class="category-window"
+            data-filter="vfx"
+        >
+            <span class="window-top">
+                <span>05</span>
+                <span>×</span>
+            </span>
+
+            <span class="window-name">
+                VFX & COMPOSITING
+            </span>
+        </button>
+
+
+        <button
+            class="category-window"
+            data-filter="vj"
+        >
+            <span class="window-top">
+                <span>06</span>
+                <span>×</span>
+            </span>
+
+            <span class="window-name">
+                VJ_Live Visuals
+            </span>
+        </button>
+
+    </nav>
+    </div>
+
+    <div class="ambient-label ambient-a" aria-hidden="true">OBJECT_07</div>
+    <div class="ambient-label ambient-b" aria-hidden="true">TOO MANY IDEAS</div>
+    <div class="ambient-label ambient-c" aria-hidden="true">404 NORMALITY</div>
+    <div class="ambient-label ambient-d" aria-hidden="true">CTRL + CHAOS</div>
+
+
+    <!-- =====================================================
+         PLAYGROUND
+    ====================================================== -->
+
+    <main
+        class="playground"
+        id="playground"
+    >
+
+        <!-- BACK PART OF FOLDER -->
+
+        <div
+            class="folder-back"
+            id="folderBack"
+        >
+
+            <div class="folder-tab">
+                PROJECTS
+            </div>
+
+            <div class="folder-back-body"></div>
+
+        </div>
+
+
+        <!-- PROJECTS LIVE BETWEEN
+             BACK AND FRONT OF FOLDER -->
+
+        <div
+            class="project-layer"
+            id="projectLayer"
+        ></div>
+
+
+        <!-- FRONT FOLDER FLAP
+             THIS COVERS PROJECTS AT INITIAL STATE -->
+
+        <div
+            class="folder-front"
+            id="folderFront"
+        >
+
+            <div class="folder-center-info">
+
+                <span
+                    class="folder-count"
+                    id="folderCount"
+                >
+                    16 ITEMS
+                </span>
+
+            </div>
+
+
+            <div class="folder-footer">
+
+                <span>
+                    /JUNE/WORK_ARCHIVE/
+                </span>
+
+                <span>
+                    FEEL FREE TO ORGANIZE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATE -->
+
+        <div class="motion-state">
+
+            <span
+                class="state-index"
+                id="stateIndex"
+            >
+                00
+            </span>
+
+            <span id="stateLabel">
+                FOLDER
+            </span>
+
+        </div>
+
+
+        <div
+            class="stage-hint"
+            id="stageHint"
+        >
+            ↓ SCROLL TO UNPACK
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="bottom-footer">
+
+        <div class="progress-wrap">
+
+            <label>
+                UNPACKING
+            </label>
+
+            <div class="bar">
+                <div
+                    class="fill"
+                    id="progressFill"
+                ></div>
+            </div>
+
+            <span
+                class="sub-text"
+                id="filterText"
+            >
+                FILTER: ALL
+            </span>
+
+        </div>
+
+
+        <div id="coordsDisplay">
+            X:000 Y:000
+        </div>
+
+    </footer>
+
+</div>
+
+<div class="site-cursor" id="siteCursor" aria-hidden="true">
+    <span></span>
+    <div class="site-cursor-label">POINTER</div>
+</div>
+
+<div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <div class="cursor-crosshair">
+        <span class="cursor-line cursor-line-x"></span>
+        <span class="cursor-line cursor-line-y"></span>
+        <span class="cursor-corner cursor-corner-tl"></span>
+        <span class="cursor-corner cursor-corner-tr"></span>
+        <span class="cursor-corner cursor-corner-bl"></span>
+        <span class="cursor-corner cursor-corner-br"></span>
+        <span class="cursor-dot"></span>
+    </div>
+
+    <div class="cursor-readout" id="cursorReadout">
+        X:000<br>
+        Y:000
+    </div>
+</div>
+
+
+<!-- =========================================================
+     PROJECT MODAL
+========================================================= -->
+
+<div
+    class="project-overlay"
+    id="projectOverlay"
+    aria-hidden="true"
+>
+
+    <div
+        class="overlay-backdrop"
+        id="overlayBackdrop"
+    ></div>
+
+
+    <div class="overlay-content">
+
+        <button
+            class="close-overlay-btn"
+            id="closeProjectBtn"
+        >
+            ×
+        </button>
+
+        <h2 id="overlayTitle">
+            PROJECT TITLE
+        </h2>
+
+
+        <div
+            class="overlay-tags"
+            id="overlayTags"
+        ></div>
+
+
+        <p id="overlayDescription">
+            Description
+        </p>
+
+
+        <div
+            class="overlay-visual"
+            id="overlayVisual"
+        ></div>
+
+
+        <a
+            href="#"
+            class="view-project"
+            id="viewProjectLink"
+        >
+            VIEW FULL PROJECT →
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<div
+    class="project-overlay"
+    id="aboutOverlay"
+    aria-hidden="true"
+>
+
+    <div
+        class="overlay-backdrop"
+        id="aboutBackdrop"
+    ></div>
+
+
+    <div class="overlay-content">
+
+        <button
+            class="close-overlay-btn"
+            id="closeAboutBtn"
+        >
+            ×
+        </button>
+
+        <h2>
+            ABOUT_JUNE.TXT
+        </h2>
+
+        <p>
+            Interactive designer / motion / experimental web.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="../data/projects.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/site-cursor.js"></script>
+
+</body>
+</html>

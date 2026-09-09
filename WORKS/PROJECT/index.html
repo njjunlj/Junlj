@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Selected project from June's creative portfolio.">
+  <title>Project Detail — June Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../assets/site-shell.css">
+  <link rel="stylesheet" href="../../assets/site-cursor.css">
+  <link rel="stylesheet" href="../../assets/site-fonts.css">
+</head>
+
+<body class="use-site-cursor page-project">
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="site-cursor" id="siteCursor" aria-hidden="true">
+    <span></span>
+    <div class="site-cursor-label">POINTER</div>
+  </div>
+  <div class="noise-grid"></div>
+
+  <header class="site-header">
+    <a class="site-logo-link" href="../../index.html" aria-label="Return to landing page">
+      <img src="../../assets/logo.png" alt="June Portfolio">
+    </a>
+    <div class="site-ready">
+      <span class="site-ready-dot" aria-hidden="true"></span>
+      READY
+    </div>
+  </header>
+
+  <nav class="homebar site-homebar" aria-label="Main navigation">
+    <a href="../../ABOUT/index.html" class="nav-item site-nav-item">
+      <span class="nav-num site-nav-num">01</span>
+      <span>YOU KNOW ME?</span>
+    </a>
+    <a href="../WORK/index.html" class="nav-item site-nav-item active" aria-current="page">
+      <span class="nav-num site-nav-num">02</span>
+      <span class="font-pixel">WORKING FILES</span>
+    </a>
+    <a href="../../CONTACT/index.html" class="nav-item site-nav-item">
+      <span class="nav-num site-nav-num">03</span>
+      <span>TALK TO ME</span>
+    </a>
+    <span class="nav-marker site-nav-marker" aria-hidden="true"></span>
+  </nav>
+
+  <main class="project-page">
+    <a href="../WORK/index.html" class="back-link" id="backLink">
+      <span>BACK TO FOLDER</span>
+    </a>
+
+    <aside class="project-info project-info--left">
+      <p class="project-type" id="projectType">PROJECT</p>
+      <h1 class="project-title" id="projectTitle">PROJECT</h1>
+      <p class="project-caption" id="projectCaption"></p>
+
+      <div class="info-group">
+        <p class="info-label">OVERVIEW:</p>
+        <p class="info-copy" id="projectOverview"></p>
+      </div>
+
+      <a class="visit-website" id="visitWebsite" href="#" target="_blank" rel="noopener" hidden>
+        VISIT WEBSITE <span aria-hidden="true">↗</span>
+      </a>
+    </aside>
+
+    <aside class="project-info project-info--right">
+      <div class="info-group">
+        <p class="info-label">YEAR:</p>
+        <p id="projectYear"></p>
+      </div>
+
+      <div class="info-group">
+        <p class="info-label">ROLE:</p>
+        <p id="projectRole"></p>
+      </div>
+
+      <div class="info-group">
+        <p class="info-label">TOOLS / METHODS:</p>
+        <p id="projectTools"></p>
+      </div>
+    </aside>
+
+    <section class="project-stack-section" aria-label="Project media">
+      <div class="stack-stage" id="stackStage">
+        <div class="media-count" id="mediaCount" aria-live="polite">01 / 01</div>
+      </div>
+      <div class="scroll-space" id="scrollSpace"></div>
+    </section>
+
+    <aside class="floating-video" id="floatingVideo">
+      <header class="video-dragbar" id="videoDragbar">
+        <div class="video-title" id="videoTitle">
+          <span class="blink-dot"></span>
+          PROJECT.YOUTUBE
+        </div>
+
+        <div class="video-actions">
+          <button type="button" id="resetVideoPosition" aria-label="Reset video position">↺</button>
+          <button type="button" id="returnVideo">RETURN</button>
+        </div>
+      </header>
+
+      <div class="floating-slot" id="floatingSlot"></div>
+      <div class="drag-note">DRAG ME AROUND ↗</div>
+    </aside>
+
+    <section class="love-meter" id="loveMeter" aria-label="Project rating">
+      <div class="love-label love-label-left">oh...!</div>
+      <div class="love-track" id="loveTrack">
+        <div class="love-fill" id="loveFill"></div>
+        <button type="button" class="love-knob" id="loveKnob" aria-label="Rate this project">
+          <span></span>
+        </button>
+      </div>
+      <div class="love-reaction" id="loveReaction">hmm</div>
+    </section>
+  </main>
+
+  <script src="../data/projects.js"></script>
+  <script src="script.js"></script>
+  <script src="../../assets/site-cursor.js"></script>
+</body>
+</html>

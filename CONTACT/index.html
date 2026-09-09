@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Talk to me — Junlj_</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../assets/site-shell.css" />
+  <link rel="stylesheet" href="../assets/site-cursor.css" />
+  <link rel="stylesheet" href="../assets/site-fonts.css" />
+</head>
+
+<body class="use-site-cursor page-contact">
+
+  <!-- custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="site-cursor" id="siteCursor" aria-hidden="true">
+    <span></span>
+    <div class="site-cursor-label">POINTER</div>
+  </div>
+
+  <header class="site-header">
+    <a class="site-logo-link" href="../index.html" aria-label="Return to landing page">
+      <img src="../assets/logo.png" alt="June Portfolio">
+    </a>
+    <div class="site-ready">
+      <span class="site-ready-dot" aria-hidden="true"></span>
+      READY
+    </div>
+  </header>
+
+  <nav class="homebar site-homebar" aria-label="Main navigation">
+    <a href="../ABOUT/index.html" class="nav-item site-nav-item">
+      <span class="nav-num site-nav-num">01</span>
+      <span>YOU KNOW ME?</span>
+    </a>
+    <a href="../WORKS/WORK/index.html" class="nav-item site-nav-item">
+      <span class="nav-num site-nav-num">02</span>
+      <span class="font-pixel">WORKING FILES</span>
+    </a>
+    <a href="index.html" class="nav-item site-nav-item active" aria-current="page">
+      <span class="nav-num site-nav-num">03</span>
+      <span>TALK TO ME</span>
+    </a>
+    <span class="nav-marker site-nav-marker" aria-hidden="true"></span>
+  </nav>
+
+  <main class="page">
+
+
+    <!-- Tiny floating bits -->
+    <span class="fragment fragment-1">HELLO?</span>
+    <span class="fragment fragment-2">ONLINE</span>
+    <span class="fragment fragment-3">✦</span>
+    <span class="fragment fragment-4">PING ME</span>
+
+
+    <!-- =========================
+         CONTACT STACK
+    ========================== -->
+    <section class="contact-area">
+
+      <div class="contact-stack">
+
+        <!-- INSTAGRAM -->
+        <a
+          class="contact-card instagram-card"
+          href="https://www.instagram.com/junlj_/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <span class="card-tab">
+            INSTAGRAM
+          </span>
+
+          <span class="contact-text">
+            Junlj_
+          </span>
+
+          <span class="corner-note">
+            OPEN ↗
+          </span>
+
+        </a>
+
+
+        <!-- MAIL -->
+        <button
+          class="contact-card email-card"
+          id="openMail"
+          type="button"
+        >
+
+          <span class="card-tab">
+            MAIL
+          </span>
+
+          <span class="contact-text">
+            quynhanh258456@gmail.com
+          </span>
+
+          <span class="corner-note">
+            WRITE ME
+          </span>
+
+        </button>
+
+
+        <!-- PHONE -->
+        <button
+          class="contact-card phone-card"
+          id="phoneCard"
+          type="button"
+          aria-expanded="false"
+        >
+
+          <span class="card-tab mobile-tab">
+            MOBILE
+          </span>
+
+          <span class="card-tab whatsapp-tab">
+            WHATSAPP
+          </span>
+
+          <span class="contact-text">
+            (+84) 964221275
+          </span>
+
+          <span class="corner-note">
+            CLICK ↓
+          </span>
+
+        </button>
+
+
+        <!-- PHONE EXPANDED OPTIONS -->
+        <div class="phone-options" id="phoneOptions">
+
+          <a
+            href="tel:+84964221275"
+            class="phone-option mobile-option"
+          >
+            <span class="option-label">MOBILE</span>
+            <span class="option-main">
+              +84 964 221 275
+            </span>
+            <span class="option-arrow">CALL ↗</span>
+          </a>
+
+          <a
+            href="https://wa.me/84964221275"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="phone-option whatsapp-option"
+          >
+            <span class="option-label">WHATSAPP</span>
+            <span class="option-main">
+              +84 964 221 275
+            </span>
+            <span class="option-arrow">CHAT ↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BOTTOM BIG TYPE
+    ========================== -->
+    <section class="bottom-message">
+
+      <h1>
+        I'm waiting for you
+      </h1>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       EMAIL WINDOW
+  ========================== -->
+  <div class="modal-shell" id="mailModal">
+
+    <section class="mail-window">
+
+      <header class="window-header">
+
+        <span class="window-title">
+          SEND SOMETHING TO JUNE
+        </span>
+
+        <button
+          type="button"
+          class="window-close"
+          id="closeMail"
+          aria-label="Close email window"
+        >
+          ×
+        </button>
+
+      </header>
+
+
+      <div class="window-body">
+
+        <div class="mail-row static-row">
+
+          <span class="field-label">
+            TO:
+          </span>
+
+          <span class="static-mail">
+            quynhanh258456@gmail.com
+          </span>
+
+        </div>
+
+
+        <label class="mail-row">
+
+          <span class="field-label">
+            FROM:
+          </span>
+
+          <input
+            type="email"
+            id="senderEmail"
+            placeholder="your@email.com"
+          />
+
+        </label>
+
+
+        <label class="mail-row">
+
+          <span class="field-label">
+            SUBJECT:
+          </span>
+
+          <input
+            type="text"
+            id="mailSubject"
+            placeholder="hi june..."
+          />
+
+        </label>
+
+
+        <label class="mail-row message-row">
+
+          <span class="field-label">
+            MESSAGE:
+          </span>
+
+          <textarea
+            id="mailMessage"
+            placeholder="write something here..."
+          ></textarea>
+
+        </label>
+
+
+        <footer class="mail-footer">
+
+          <span class="tiny-status">
+            MESSAGE READY_
+          </span>
+
+          <button
+            class="send-button"
+            id="sendMail"
+            type="button"
+          >
+            SEND IT ↗
+          </button>
+
+        </footer>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+  <script src="script.js"></script>
+  <script src="../assets/site-cursor.js"></script>
+</body>
+</html>

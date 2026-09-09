@@ -1,0 +1,1488 @@
+/* ======================================================
+   RESET & BASE
+====================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  cursor: default;
+}
+
+body {
+  overflow: hidden;
+  background: #f7f6f0;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #111;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+}
+
+.page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ======================================================
+   GRID & SCAN
+====================================================== */
+.system-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.system-grid {
+  position: absolute;
+  inset: -4%;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.065) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.065) 1px,
+      transparent 1px
+    );
+
+  background-size: 44px 44px;
+
+  transition:
+    transform 0.3s steps(4);
+}
+
+.scan-line {
+  position: absolute;
+  top: -10%;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: #111;
+  opacity: 0.13;
+
+  animation:
+    scan 5.5s linear infinite;
+}
+
+@keyframes scan {
+  from {
+    top: -5%;
+  }
+
+  to {
+    top: 105%;
+  }
+}
+
+/* ======================================================
+   TOPBAR
+====================================================== */
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 18px 22px;
+
+  z-index: 150;
+
+  font-size: 10px;
+  letter-spacing: 0.14em;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.4s ease;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.top-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #35ff14;
+
+  animation:
+    statusBlink 0.8s steps(2) infinite;
+}
+
+@keyframes statusBlink {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* ======================================================
+   LEFT / RIGHT PANELS
+====================================================== */
+.left-panel,
+.right-panel {
+  position: absolute;
+  top: 15%;
+
+  z-index: 80;
+
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.left-panel {
+  left: 22px;
+  width: 145px;
+}
+
+.right-panel {
+  right: 22px;
+  width: 180px;
+}
+
+.system-label {
+  margin-bottom: 18px;
+  opacity: 0.4;
+}
+
+.module {
+  position: relative;
+
+  margin-bottom: 17px;
+  padding-top: 7px;
+
+  border-top:
+    1px solid rgba(0, 0, 0, 0.35);
+}
+
+.module-title {
+  margin-bottom: 5px;
+  opacity: 0.45;
+}
+
+.module-value {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.module-small {
+  margin-top: 4px;
+  opacity: 0.6;
+}
+
+.system-status-value {
+  color: #ff3c91;
+}
+
+.mini-bar {
+  width: 100%;
+  height: 4px;
+
+  background:
+    rgba(0, 0, 0, 0.12);
+
+  overflow: hidden;
+}
+
+.mini-bar span {
+  display: block;
+
+  height: 100%;
+
+  background: #ff3c91;
+
+  animation:
+    tinyLoading
+    1.7s
+    steps(8)
+    infinite
+    alternate;
+}
+
+@keyframes tinyLoading {
+  from {
+    transform: scaleX(0.7);
+    transform-origin: left;
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.weird-module {
+  color: #ff3c91;
+
+  animation:
+    moduleLag
+    4s
+    steps(1)
+    infinite;
+}
+
+@keyframes moduleLag {
+  0%,
+  92%,
+  100% {
+    transform: translate(0);
+  }
+
+  94% {
+    transform:
+      translate(6px, -2px);
+  }
+
+  96% {
+    transform:
+      translate(-2px, 3px);
+  }
+}
+
+.loading-file {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding: 7px 0;
+
+  border-bottom:
+    1px solid rgba(0, 0, 0, 0.15);
+}
+
+.file-state {
+  opacity: 0.45;
+}
+
+.file-state.active {
+  color: #004dff;
+  opacity: 1;
+
+  animation:
+    textBlink
+    0.8s
+    steps(2)
+    infinite;
+}
+
+@keyframes textBlink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.glitch-file {
+  animation:
+    fileLag
+    5s
+    steps(1)
+    infinite;
+}
+
+@keyframes fileLag {
+  0%,
+  85%,
+  100% {
+    transform: translate(0);
+  }
+
+  88% {
+    transform: translate(-10px);
+  }
+
+  90% {
+    transform: translate(4px);
+  }
+
+  91% {
+    transform: translate(0);
+  }
+}
+
+.live-log {
+  margin-top: 20px;
+  padding: 8px;
+
+  min-height: 63px;
+
+  border:
+    1px solid rgba(0, 0, 0, 0.25);
+
+  background:
+    rgba(247, 246, 240, 0.72);
+}
+
+.live-log-title {
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+
+  border-bottom:
+    1px solid rgba(0, 0, 0, 0.15);
+
+  opacity: 0.4;
+
+  font-size: 7px;
+}
+
+.live-log-content {
+  font-size: 8px;
+  line-height: 1.5;
+
+  color: #004dff;
+}
+
+/* ======================================================
+   FLOATING UI
+====================================================== */
+.floating-ui {
+  position: absolute;
+
+  z-index: 4;
+
+  padding: 4px 6px;
+
+  border:
+    1px solid rgba(0, 0, 0, 0.22);
+
+  background:
+    rgba(247, 246, 240, 0.65);
+
+  backdrop-filter: blur(2px);
+
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+
+  pointer-events: none;
+
+  animation:
+    uiFloat
+    6s
+    ease-in-out
+    infinite;
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.ui-1 {
+  left: 23%;
+  top: 12%;
+
+  color: #004dff;
+}
+
+.ui-2 {
+  right: 26%;
+  top: 18%;
+
+  color: #ff3c91;
+
+  animation-duration: 4.2s;
+}
+
+.ui-3 {
+  left: 18%;
+  top: 63%;
+
+  color: #18c900;
+
+  animation-duration: 7.2s;
+}
+
+.ui-4 {
+  right: 20%;
+  top: 66%;
+
+  color: #ff5b00;
+
+  animation-duration: 3.8s;
+}
+
+.ui-5 {
+  left: 34%;
+  top: 76%;
+
+  animation-duration: 5.6s;
+}
+
+.ui-6 {
+  right: 34%;
+  top: 8%;
+
+  background: #fff;
+
+  animation:
+    warningLag
+    3.7s
+    steps(1)
+    infinite;
+}
+
+@keyframes uiFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform:
+      translate(8px, -10px);
+  }
+}
+
+@keyframes warningLag {
+  0%,
+  80%,
+  100% {
+    transform: translate(0);
+    opacity: 0.75;
+  }
+
+  84% {
+    transform:
+      translate(12px, -6px);
+
+    opacity: 1;
+  }
+
+  86% {
+    transform:
+      translate(-6px, 2px);
+  }
+
+  88% {
+    transform: translate(0);
+  }
+}
+
+.page.open .left-panel,
+.page.open .right-panel,
+.page.open .floating-ui {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ======================================================
+   ACT 1: HEART SCENE
+====================================================== */
+.heart-scene {
+  position: absolute;
+
+  left: 50%;
+  top: 47%;
+
+  width: min(55vw, 650px);
+  height: min(70vh, 650px);
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 20;
+
+  cursor: pointer;
+
+  animation:
+    heartBreath
+    5.4s
+    cubic-bezier(0.45, 0, 0.2, 1)
+    infinite;
+
+  transition:
+    width
+    0.8s
+    cubic-bezier(0.16, 1, 0.3, 1),
+    height
+    0.8s
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes heartBreath {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      scale(1.02);
+  }
+
+  100% {
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+}
+
+/* ======================================================
+   FACES
+====================================================== */
+.face {
+  position: absolute;
+
+  display: block;
+
+  width: 15%;
+  height: auto;
+
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0;
+
+  transform:
+    scale(0.2)
+    translateY(15px);
+
+  transition:
+    left
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1),
+    top
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1),
+    width
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1),
+    opacity
+    0.3s
+    ease,
+    filter
+    0.3s
+    ease;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.face.loaded {
+  opacity: 1;
+}
+
+.face.erased {
+  opacity: 0 !important;
+
+  filter: blur(1px);
+
+  transform:
+    scale(0.65) !important;
+
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+/* ======================================================
+   HEART COORDINATES
+====================================================== */
+.f1 { left: 8%; top: 18%; width: 17%; }
+.f2 { left: 2%; top: 30%; width: 16%; }
+.f3 { left: 16%; top: 8%; width: 14%; }
+.f4 { left: 26%; top: 16%; width: 13%; }
+.f5 { left: 13%; top: 35%; width: 15%; }
+.f6 { left: 33%; top: 10%; width: 14%; }
+.f7 { left: 39%; top: 25%; width: 13%; }
+.f8 { left: 43%; top: 8%; width: 14%; }
+.f9 { left: 52%; top: 9%; width: 13%; }
+.f10 { left: 64%; top: 11%; width: 17%; }
+.f11 { left: 77%; top: 27%; width: 16%; }
+.f12 { left: 68%; top: 34%; width: 15%; }
+.f13 { left: 5%; top: 44%; width: 15%; }
+.f14 { left: 15%; top: 52%; width: 14%; }
+.f15 { left: 25%; top: 44%; width: 13%; }
+.f16 { left: 21%; top: 61%; width: 14%; }
+.f17 { left: 31%; top: 37%; width: 13%; }
+.f18 { left: 42%; top: 36%; width: 16%; }
+.f19 { left: 38%; top: 52%; width: 14%; }
+.f20 { left: 51%; top: 49%; width: 14%; }
+.f21 { left: 63%; top: 47%; width: 14%; }
+.f22 { left: 74%; top: 42%; width: 15%; }
+.f23 { left: 66%; top: 61%; width: 14%; }
+.f24 { left: 30%; top: 66%; width: 14%; }
+.f25 { left: 43%; top: 68%; width: 13%; }
+.f26 { left: 54%; top: 68%; width: 14%; }
+.f27 { left: 40%; top: 79%; width: 14%; }
+.f28 { left: 46%; top: 88%; width: 12%; }
+.f29 { left: 10%; top: 24%; width: 13%; }
+.f30 { left: 21%; top: 22%; width: 12%; }
+.f31 { left: 30%; top: 26%; width: 12%; }
+.f32 { left: 47%; top: 21%; width: 13%; }
+.f33 { left: 58%; top: 22%; width: 12%; }
+.f34 { left: 70%; top: 23%; width: 13%; }
+.f35 { left: 9%; top: 47%; width: 12%; }
+.f36 { left: 22%; top: 48%; width: 12%; }
+.f37 { left: 34%; top: 47%; width: 12%; }
+.f38 { left: 47%; top: 46%; width: 12%; }
+.f39 { left: 58%; top: 43%; width: 13%; }
+.f40 { left: 70%; top: 48%; width: 12%; }
+.f41 { left: 27%; top: 57%; width: 12%; }
+.f42 { left: 39%; top: 61%; width: 12%; }
+.f43 { left: 50%; top: 59%; width: 12%; }
+.f44 { left: 60%; top: 57%; width: 12%; }
+.f45 { left: 33%; top: 72%; width: 12%; }
+.f46 { left: 47%; top: 75%; width: 12%; }
+.f47 { left: 57%; top: 72%; width: 12%; }
+.f48 { left: 45%; top: 82%; width: 11%; }
+
+/* ======================================================
+   FACE MOTION
+====================================================== */
+.face.loaded:nth-of-type(4n + 1) {
+  animation:
+    loadPop
+    0.35s
+    cubic-bezier(0.2, 0.9, 0.3, 1)
+    both,
+    floatA
+    4s
+    ease-in-out
+    infinite
+    0.5s;
+}
+
+.face.loaded:nth-of-type(4n + 2) {
+  animation:
+    loadPop
+    0.25s
+    steps(4)
+    both,
+    floatB
+    5.2s
+    ease-in-out
+    infinite
+    0.4s;
+}
+
+.face.loaded:nth-of-type(4n + 3) {
+  animation:
+    loadPop
+    0.4s
+    cubic-bezier(0.2, 0.9, 0.3, 1)
+    both,
+    floatC
+    3.4s
+    ease-in-out
+    infinite
+    0.5s;
+}
+
+.face.loaded:nth-of-type(4n) {
+  animation:
+    loadLag
+    0.4s
+    steps(5)
+    both,
+    floatD
+    5.9s
+    ease-in-out
+    infinite
+    0.6s;
+}
+
+@keyframes loadPop {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(0.2)
+      translateY(20px);
+  }
+
+  60% {
+    opacity: 1;
+
+    transform:
+      scale(1.12);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+}
+
+@keyframes loadLag {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(0.3);
+  }
+
+  30% {
+    opacity: 1;
+
+    transform:
+      scale(0.65)
+      translateX(10px);
+  }
+
+  55% {
+    transform:
+      scale(0.65)
+      translateX(10px);
+  }
+
+  70% {
+    transform:
+      scale(1.08)
+      translateX(-4px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+}
+
+@keyframes floatA {
+  50% {
+    transform:
+      translate(-5px, -8px)
+      rotate(-2deg)
+      scale(1.04);
+  }
+}
+
+@keyframes floatB {
+  0%,
+  34% {
+    transform:
+      translate(0, 0);
+  }
+
+  35% {
+    transform:
+      translate(5px, -2px);
+  }
+
+  65% {
+    transform:
+      translate(-4px, -8px)
+      scale(1.04);
+  }
+}
+
+@keyframes floatC {
+  50% {
+    transform:
+      translate(7px, -6px)
+      rotate(3deg)
+      scale(0.98);
+  }
+}
+
+@keyframes floatD {
+  45% {
+    transform:
+      translate(-5px, 6px)
+      scale(1.05);
+  }
+}
+
+/* ======================================================
+   JUNLJ TITLE
+====================================================== */
+.june-title {
+  position: absolute;
+
+  left: 50%;
+  top: 49%;
+
+  z-index: 1;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.9);
+
+  font-family:
+    Georgia,
+    "Playfair Display",
+    serif;
+
+  font-style: italic;
+  font-weight: 400;
+
+  font-size:
+    clamp(2.8rem, 6vw, 5rem);
+
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* ======================================================
+   OPEN FRAME
+====================================================== */
+.page.open .heart-scene {
+  width: 100vw;
+  height: 100vh;
+
+  top: 50%;
+
+  animation: none;
+
+  pointer-events: none;
+
+  cursor: default;
+}
+
+.page.open .june-title {
+  opacity: 0 !important;
+}
+
+/* ======================================================
+   FRAME FACE POSITIONS
+====================================================== */
+.page.open .f1 { left: 1%; top: 1%; width: 5.5%; }
+.page.open .f2 { left: 7%; top: 0%; width: 5.5%; }
+.page.open .f3 { left: 13%; top: 1%; width: 5.5%; }
+.page.open .f4 { left: 19%; top: 0%; width: 5.5%; }
+.page.open .f5 { left: 25%; top: 1%; width: 5.5%; }
+.page.open .f6 { left: 31%; top: 0%; width: 5.5%; }
+.page.open .f7 { left: 37%; top: 1%; width: 5.5%; }
+.page.open .f8 { left: 43%; top: 0%; width: 5.5%; }
+.page.open .f9 { left: 49%; top: 1%; width: 5.5%; }
+.page.open .f10 { left: 55%; top: 0%; width: 5.5%; }
+.page.open .f11 { left: 61%; top: 1%; width: 5.5%; }
+.page.open .f12 { left: 67%; top: 0%; width: 5.5%; }
+.page.open .f13 { left: 73%; top: 1%; width: 5.5%; }
+.page.open .f14 { left: 79%; top: 0%; width: 5.5%; }
+.page.open .f15 { left: 85%; top: 1%; width: 5.5%; }
+.page.open .f16 { left: 91%; top: 0%; width: 5.5%; }
+.page.open .f17 { left: 94%; top: 12%; width: 5%; }
+.page.open .f18 { left: 93%; top: 23%; width: 5.5%; }
+.page.open .f19 { left: 94%; top: 34%; width: 5%; }
+.page.open .f20 { left: 93%; top: 45%; width: 5.5%; }
+.page.open .f21 { left: 94%; top: 56%; width: 5%; }
+.page.open .f22 { left: 93%; top: 67%; width: 5.5%; }
+.page.open .f23 { left: 94%; top: 78%; width: 5%; }
+.page.open .f24 { left: 88%; top: 89%; width: 5.5%; }
+.page.open .f25 { left: 82%; top: 90%; width: 5.5%; }
+.page.open .f26 { left: 76%; top: 89%; width: 5.5%; }
+.page.open .f27 { left: 70%; top: 90%; width: 5.5%; }
+.page.open .f28 { left: 64%; top: 89%; width: 5.5%; }
+.page.open .f29 { left: 58%; top: 90%; width: 5.5%; }
+.page.open .f30 { left: 52%; top: 89%; width: 5.5%; }
+.page.open .f31 { left: 46%; top: 90%; width: 5.5%; }
+.page.open .f32 { left: 40%; top: 89%; width: 5.5%; }
+.page.open .f33 { left: 34%; top: 90%; width: 5.5%; }
+.page.open .f34 { left: 28%; top: 89%; width: 5.5%; }
+.page.open .f35 { left: 22%; top: 90%; width: 5.5%; }
+.page.open .f36 { left: 16%; top: 89%; width: 5.5%; }
+.page.open .f37 { left: 0%; top: 78%; width: 5%; }
+.page.open .f38 { left: 1%; top: 67%; width: 5%; }
+.page.open .f39 { left: 0%; top: 56%; width: 5%; }
+.page.open .f40 { left: 1%; top: 45%; width: 5%; }
+.page.open .f41 { left: 0%; top: 34%; width: 5%; }
+.page.open .f42 { left: 1%; top: 23%; width: 5%; }
+.page.open .f43 { left: 0%; top: 12%; width: 5%; }
+.page.open .f44 { left: 2%; top: 6%; width: 5%; }
+.page.open .f45 { left: 92%; top: 6%; width: 5%; }
+.page.open .f46 { left: 92%; top: 84%; width: 5%; }
+.page.open .f47 { left: 2%; top: 84%; width: 5%; }
+.page.open .f48 { left: 48%; top: 2%; width: 5%; }
+
+/* ======================================================
+   FRAME HOVER REACTIONS
+====================================================== */
+.page.frame-about .f37,
+.page.frame-about .f38,
+.page.frame-about .f39 {
+  translate:
+    10px 0 !important;
+}
+
+.page.frame-work .face {
+  scale: 1.05;
+}
+
+.page.frame-contact .f17,
+.page.frame-contact .f18,
+.page.frame-contact .f19 {
+  animation:
+    contactChain
+    0.5s
+    cubic-bezier(0.2, 0.9, 0.2, 1)
+    infinite
+    alternate;
+}
+
+@keyframes contactChain {
+  from { scale: 1; }
+  to { scale: 1.1; }
+}
+
+/* ======================================================
+   CONTROL CENTER
+====================================================== */
+.control-center {
+  position: absolute;
+  inset: 0;
+
+  z-index: 45;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.4s ease 0.3s,
+    visibility 0s linear 0.4s;
+}
+
+.page.open .control-center {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+.control-center-head {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.3);
+}
+
+.page.open .control-center-head {
+  animation:
+    centerBoot
+    0.5s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.4s
+    both;
+}
+
+@keyframes centerBoot {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -44%) scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+.control-mini {
+  margin-bottom: 2px;
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  opacity: 0.45;
+}
+
+.control-center h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+}
+
+.current-status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(247, 246, 240, 0.85);
+  font-size: 6px;
+  letter-spacing: 0.12em;
+}
+
+/* ======================================================
+   NAV OBJECTS
+====================================================== */
+.nav-object {
+  position: absolute;
+  display: block;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background: rgba(247, 246, 240, 0.95);
+  color: #111;
+  padding: 12px 14px;
+  opacity: 0;
+  transform: scale(0.85);
+  cursor: pointer;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.page.open .nav-object {
+  animation: objectBoot 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.page.open .about-object { animation-delay: 0.5s; }
+.page.open .work-object { animation-delay: 0.6s; }
+.page.open .contact-object { animation-delay: 0.7s; }
+
+@keyframes objectBoot {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.about-object {
+  left: 26%;
+  top: 40%;
+  width: 190px;
+  transform: rotate(-3deg);
+}
+
+.work-object {
+  left: 50%;
+  top: 64%;
+  width: clamp(300px, 26vw, 420px);
+  min-height: 130px;
+  padding: 14px;
+  transform: translate(-50%, -50%) rotate(1.5deg);
+}
+
+.contact-object {
+  right: 26%;
+  top: 43%;
+  width: 190px;
+  transform: rotate(3deg);
+}
+
+.object-title {
+  font-size: clamp(14px, 1.2vw, 19px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.work-object .object-title {
+  font-size: clamp(22px, 2.4vw, 36px);
+}
+
+.object-sub {
+  margin-top: 3px;
+  max-width: 32ch;
+  font-size: 6.5px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  opacity: 0.5;
+}
+
+.object-open {
+  margin-top: 14px;
+  font-size: 6.5px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.nav-object:hover {
+  background: #111;
+  color: #f7f6f0;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.about-object:hover {
+  transform: rotate(-1deg) translate(-3px, -3px) scale(1.02);
+}
+
+.contact-object:hover {
+  transform: rotate(1deg) translate(3px, -3px) scale(1.02);
+}
+
+.work-object:hover {
+  transform: translate(-50%, -50%) rotate(0deg) scale(1.03);
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+.loading-footer {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: min(52vw, 600px);
+  transform: translateX(-50%);
+  z-index: 40;
+  transition: opacity 0.3s ease;
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border: 1px solid #111;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #ff3c91;
+  transition: width 0.18s steps(3);
+}
+
+.footer-sub {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 6.5px;
+  letter-spacing: 0.1em;
+  opacity: 0.45;
+}
+
+.page.open .loading-footer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ======================================================
+   ERROR POPUP
+====================================================== */
+.error-popup {
+  position: absolute;
+  z-index: 200;
+  left: 50%;
+  top: 50%;
+  width: 170px;
+  padding: 8px;
+  background: #f7f6f0;
+  border: 1px solid #111;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.error-title {
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #111;
+  font-size: 7.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.error-copy {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.error-popup.show {
+  animation: popupGlitch 0.5s steps(4);
+}
+
+@keyframes popupGlitch {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  25% { opacity: 1; transform: translate(-46%, -52%) scale(1.05); }
+  40% { transform: translate(-54%, -48%) scale(0.95); }
+  65% { transform: translate(-50%, -50%) scale(1); }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ======================================================
+   CUSTOM CURSOR DECORATION
+====================================================== */
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #111;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    width 0.12s steps(2),
+    height 0.12s steps(2),
+    border-radius 0.12s ease,
+    background 0.12s ease,
+    opacity 0.12s ease;
+  will-change: left, top;
+}
+
+.cursor.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cursor::before,
+.cursor::after {
+  content: "";
+  position: absolute;
+  background: #111;
+}
+
+.cursor::before {
+  width: 28px;
+  height: 1px;
+  left: -4px;
+  top: 50%;
+}
+
+.cursor::after {
+  width: 1px;
+  height: 28px;
+  top: -4px;
+  left: 50%;
+}
+
+.cursor span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  left: 50%;
+  top: 50%;
+  background: #ff3c91;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-label {
+  position: absolute;
+  left: 22px;
+  top: 16px;
+  padding: 2px 4px;
+  background: #f7f6f0;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  font-size: 5px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  opacity: 0.65;
+}
+
+.cursor.eraser {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px dashed #ff3c91;
+  background: rgba(255, 60, 145, 0.05);
+}
+
+.cursor.eraser .cursor-label {
+  font-size: 0;
+}
+
+.cursor.eraser .cursor-label::before {
+  content: "ERASER";
+  font-size: 5px;
+}
+
+/* ======================================================
+   HEART STATUS
+====================================================== */
+.heart-status {
+  position: absolute;
+  left: 50%;
+  top: 73%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 30;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.tiny-spinner {
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-top-color: #004dff;
+  border-radius: 50%;
+  animation: spin 0.7s steps(8) infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.page.ready .tiny-spinner {
+  display: none;
+}
+
+.page.open .heart-status {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ======================================================
+   TABLET / MOBILE LAYOUT
+====================================================== */
+@media (max-width: 850px) {
+  .heart-scene {
+    width: 88vw;
+    height: 88vw;
+    top: 45%;
+  }
+
+  .control-center-head {
+    top: 50% !important;
+    width: 85vw;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .page.open .control-center-head {
+    animation: centerBootMobile 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  @keyframes centerBootMobile {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -44%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  .about-object,
+  .contact-object,
+  .work-object {
+    position: absolute;
+    left: 50% !important;
+    right: auto !important;
+    width: min(320px, 85vw) !important;
+    min-height: auto !important;
+    transform: translateX(-50%) scale(0.9) !important;
+  }
+
+  .about-object {
+    top: 30% !important;
+    transform: translateX(-50%) rotate(-1.5deg) !important;
+  }
+
+  .work-object {
+    left: 50% !important;
+    top: 52% !important;
+    transform: translateX(-50%) translate(-50%, -50%) rotate(1deg) !important;
+  }
+
+  .page.open .work-object {
+    left: 50% !important;
+    transform: translateX(-50%) rotate(1deg) !important;
+  }
+
+  .contact-object {
+    top: 74% !important;
+    transform: translateX(-50%) rotate(1.5deg) !important;
+  }
+
+  .nav-object:hover {
+    transform: translateX(-50%) scale(1.02) !important;
+  }
+
+  .page.open .face {
+    width: 7% !important;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+====================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ======================================================
+   MAIN INFORMATION COLOR
+====================================================== */
+:root {
+  --main-info-blue: rgb(0, 0, 207);
+}
+
+.topbar,
+.heart-scene,
+.heart-status,
+.control-center,
+.nav-object,
+.loading-footer,
+.error-popup {
+  color: var(--main-info-blue);
+}

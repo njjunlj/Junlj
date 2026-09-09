@@ -1,0 +1,145 @@
+@font-face {
+  font-family: "Geist Pixel";
+  src: url("fonts/GeistPixel.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playwrite US Modern";
+  src: url("fonts/PlaywriteUSModern.woff") format("woff");
+  font-style: normal;
+  font-weight: 100 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("fonts/Sora.woff") format("woff");
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+:root {
+  --font-pixel: "Geist Pixel", monospace;
+  --font-playwrite-modern: "Playwrite US Modern", cursive;
+  --font-sora: "Sora", Arial, sans-serif;
+}
+
+html,
+body,
+button,
+a,
+input,
+textarea,
+select {
+  font-family: var(--font-sora);
+}
+
+.site-header,
+.site-homebar,
+.site-cursor,
+.site-header *,
+.site-homebar *,
+.site-cursor * {
+  font-family: var(--font-sora);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel) !important;
+  font-weight: 400 !important;
+}
+
+.page-landing,
+.page-landing button,
+.page-landing a,
+.page-landing input,
+.page-landing textarea,
+.page-landing .june-title,
+.page-landing .control-center h1,
+.page-landing .nav-object {
+  font-family: var(--font-pixel);
+}
+
+.page-landing .site-cursor,
+.page-landing .site-cursor * {
+  font-family: var(--font-sora);
+}
+
+.page-about .face-title,
+.page-about .select-label,
+.page-about .portrait-name,
+.page-about .process-content-header,
+.page-about .process-step,
+.page-about .skill-box {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+}
+
+.page-work .folder-tab,
+.page-work .folder-count {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+}
+
+.page-work .thumb-label,
+.page-work .project-meta .project-title {
+  font-family: var(--font-sora);
+}
+
+.page-work #overlayDescription {
+  font-family: var(--font-playwrite-modern);
+  font-weight: 400;
+}
+
+.page-contact,
+.page-contact button,
+.page-contact a,
+.page-contact input,
+.page-contact textarea {
+  font-family: var(--font-sora);
+}
+
+.page-contact .site-header,
+.page-contact .site-header *,
+.page-contact .site-homebar,
+.page-contact .site-homebar *,
+.page-contact .site-cursor,
+.page-contact .site-cursor * {
+  font-family: var(--font-sora);
+}
+
+.page-contact .contact-text,
+.page-contact .option-main,
+.page-contact .static-mail {
+  font-family: var(--font-playwrite-modern);
+  font-weight: 400;
+}
+
+.page-contact .bottom-message h1 {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+}
+
+.page-project .project-title,
+.page-project .project-type,
+.page-project .project-info--right,
+.page-project .project-info--right *,
+.page-project .info-label {
+  font-family: var(--font-sora);
+}
+
+.page-project .project-caption,
+.page-project #projectOverview {
+  font-family: var(--font-playwrite-modern);
+  font-weight: 400;
+}
+
+.page-work #overlayDescription,
+.page-project .project-caption,
+.page-project #projectOverview {
+  line-height: 1.75;
+  letter-spacing: 0;
+}

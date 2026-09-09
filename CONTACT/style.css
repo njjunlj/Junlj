@@ -1,0 +1,680 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+
+  /* Đồng nhất lưới background màu xanh nhạt như các page chính[cite: 9] */
+  background:
+    linear-gradient(
+      rgba(22, 44, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(22, 44, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    #f5f4ef;
+
+  background-size: 32px 32px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #121212;
+  cursor: none;
+}
+
+button,
+a {
+  cursor: none;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+  --blue: #162cff;
+  --pink: #ff178b;
+  --cyan: #04c9ef;
+  --green: #00ef00;
+  --paper: #f5f4ef;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 3vh 3vw 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+.cursor,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.cursor {
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  transition: width 0.16s ease, height 0.16s ease, background 0.16s ease;
+}
+
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--pink);
+  border-radius: 50%;
+}
+
+body.cursor-hover .cursor {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 23, 139, 0.13);
+}
+
+
+/* =========================================================
+   TOP NAV (Đồng bộ style với các trang About / Works)[cite: 9]
+========================================================= */
+
+.top-nav {
+  position: relative;
+  width: min(940px, 76vw);
+  margin: 1vh auto 0;
+  height: 54px;
+  border: 3px solid var(--blue);
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  align-items: center;
+  background: rgba(245, 244, 239, 0.95);
+  transform: rotate(-0.15deg);
+  z-index: 20;
+}
+
+.top-nav::after {
+  content: "";
+  position: absolute;
+  inset: 6px -3px -7px 6px;
+  border: 2px solid var(--blue);
+  pointer-events: none;
+  transform: rotate(0.2deg);
+  z-index: -1;
+}
+
+.nav-item {
+  position: relative;
+  color: var(--blue);
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: clamp(10px, 0.85vw, 14px);
+}
+
+.nav-item span {
+  width: 78%;
+  padding: 4px 8px;
+  text-align: center;
+  border: 2px solid var(--blue);
+  background: #fff;
+  transform: rotate(-0.2deg);
+  transition: 0.18s ease;
+}
+
+.nav-item:nth-child(2) span {
+  transform: rotate(0.2deg);
+}
+
+.nav-item:nth-child(3) span {
+  transform: rotate(-0.4deg);
+}
+
+.nav-item:hover span,
+.nav-item.active span {
+  background: var(--blue);
+  color: white;
+  transform: translateY(-2px) rotate(0.4deg);
+}
+
+
+/* =========================================================
+   CONTACT AREA
+========================================================= */
+
+.contact-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 0;
+}
+
+.contact-stack {
+  position: relative;
+  width: min(620px, 72vw);
+  height: 320px;
+}
+
+
+/* =========================================================
+   CONTACT CARDS[cite: 9]
+========================================================= */
+
+.contact-card {
+  position: absolute;
+  border: 2px solid var(--blue);
+  font-family: inherit;
+  color: var(--blue);
+  text-decoration: none;
+  padding: 22px 55px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: none;
+  box-shadow: 4px 6px 0 rgba(22, 44, 255, 0.15);
+  transition: transform 0.23s cubic-bezier(0.2, 0.8, 0.25, 1.15), filter 0.2s ease;
+}
+
+.contact-card:hover {
+  filter: saturate(1.1);
+  z-index: 20;
+}
+
+.instagram-card {
+  width: 320px;
+  height: 78px;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  background: var(--green);
+}
+
+.instagram-card:hover {
+  transform: translateX(-50%) translateY(-6px) rotate(1deg) scale(1.04);
+}
+
+.email-card {
+  width: 620px;
+  height: 88px;
+  top: 105px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2.2deg);
+  background: var(--cyan);
+}
+
+.email-card:hover {
+  transform: translateX(-50%) translateY(-6px) rotate(-1deg) scale(1.02);
+}
+
+.phone-card {
+  width: 405px;
+  height: 88px;
+  top: 215px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5.5deg);
+  background: var(--blue);
+  color: white;
+}
+
+.phone-card:hover {
+  transform: translateX(-50%) translateY(-5px) rotate(-2deg) scale(1.04);
+}
+
+.contact-text {
+  position: relative;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: clamp(22px, 2.25vw, 37px);
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(-1deg);
+  z-index: 3;
+}
+
+.email-card .contact-text {
+  font-size: clamp(17px, 1.75vw, 30px);
+}
+
+.card-tab {
+  position: absolute;
+  top: -18px;
+  left: 0;
+  min-width: 95px;
+  padding: 3px 10px;
+  background: var(--pink);
+  color: white;
+  font-weight: 900;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
+.email-card .card-tab {
+  left: auto;
+  right: 0;
+  transform: rotate(1deg);
+}
+
+.phone-card .card-tab {
+  background: var(--pink);
+}
+
+.phone-card .mobile-tab {
+  left: 0;
+}
+
+.phone-card .whatsapp-tab {
+  left: 78px;
+  transform: rotate(2deg);
+}
+
+.corner-note {
+  position: absolute;
+  right: 9px;
+  bottom: 6px;
+  opacity: 0;
+  font-size: 9px;
+  font-weight: 900;
+  transition: opacity 0.17s ease;
+}
+
+.contact-card:hover .corner-note {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   PHONE EXPANSION
+========================================================= */
+
+.phone-options {
+  position: absolute;
+  width: 470px;
+  top: 305px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-18px) scaleY(0.7);
+  opacity: 0;
+  pointer-events: none;
+  display: grid;
+  gap: 7px;
+  transform-origin: top center;
+  transition: opacity 0.25s ease, transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1.2);
+  z-index: 30;
+}
+
+.phone-options.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0) scaleY(1);
+}
+
+.phone-option {
+  min-height: 58px;
+  padding: 10px 16px;
+  display: grid;
+  grid-template-columns: 95px 1fr auto;
+  align-items: center;
+  text-decoration: none;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  background: white;
+  cursor: none;
+  transition: 0.18s ease;
+}
+
+.phone-option:nth-child(1) { transform: rotate(1.2deg); }
+.phone-option:nth-child(2) { transform: rotate(-1deg); }
+
+.phone-option:hover {
+  background: var(--blue);
+  color: white;
+  transform: translateX(10px) rotate(0deg);
+}
+
+.option-label { font-size: 10px; font-weight: 900; }
+.option-main { font-family: "Comic Sans MS", cursive; font-size: 18px; font-weight: 900; }
+.option-arrow { font-size: 10px; font-weight: 900; }
+
+
+/* =========================================================
+   BOTTOM TYPE[cite: 9]
+========================================================= */
+
+.bottom-message {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  z-index: 10;
+  text-align: center;
+  line-height: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.bottom-message h1 {
+  position: relative;
+  margin: 0;
+  padding-bottom: 2px;
+  color: var(--pink);
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: clamp(48px, 11.2vw, 195px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  display: block;
+  width: 100%;
+  transform: rotate(0.4deg);
+  opacity: 0.98;
+}
+
+/* =========================================================
+   FRAME TOP BAR (Thanh bar 3 phân vùng y hệt ảnh mẫu)
+========================================================= */
+.frame-top-bar {
+  position: relative;
+  width: min(940px, 86vw);
+  margin: 2vh auto 0;
+  height: 42px;
+  background: var(--paper);
+  border: 1.5px solid #171717;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 120;
+}
+
+.bar-left-cluster,
+.bar-right-cluster {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cluster-line {
+  display: block;
+  width: 14px;
+  height: 1.5px;
+  background: var(--blue);
+}
+
+.bar-left-cluster {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dash-dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--pink);
+}
+
+.bar-partition {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.partition-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #181818;
+  font-size: 9px;
+  letter-spacing: .08em;
+  border-right: 1px solid #dcd9ce;
+  transition: background .18s ease, color .18s ease;
+}
+
+.partition-item:last-child {
+  border-right: none;
+}
+
+.partition-item .seq-num {
+  color: #888;
+  font-size: 8px;
+}
+
+.partition-item .main-title {
+  font-weight: 700;
+}
+
+.partition-item:hover,
+.partition-item.active {
+  background: var(--blue);
+  color: #fff;
+}
+
+.partition-item:hover .seq-num,
+.partition-item.active .seq-num {
+  color: rgba(255,255,255,.7);
+}
+
+/* =========================================================
+   FLOATING FRAGMENTS (Hệ thống các mảnh floating bits)
+========================================================= */
+
+.fragment {
+  position: absolute;
+  z-index: 2;
+  font-weight: 900;
+  font-size: 10px;
+  color: var(--blue);
+  pointer-events: none;
+  animation: floatFragment 4s ease-in-out infinite alternate;
+}
+
+.fragment-1 { left: 8vw; top: 25vh; transform: rotate(-10deg); }
+.fragment-2 { right: 10vw; top: 32vh; color: var(--pink); animation-delay: -1.5s; }
+.fragment-3 { left: 15vw; top: 72vh; font-size: 18px; color: var(--cyan); animation-delay: -2.8s; }
+.fragment-4 { right: 15vw; top: 68vh; color: var(--pink); animation-delay: -0.8s; }
+
+@keyframes floatFragment {
+  from { translate: 0 -4px; }
+  to { translate: 0 7px; }
+}
+
+
+/* =========================================================
+   MAIL MODAL
+========================================================= */
+
+.modal-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(245, 244, 239, 0.6);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-shell.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mail-window {
+  width: min(700px, 92vw);
+  border: 3px solid var(--blue);
+  background: #fff;
+  box-shadow: 10px 10px 0 var(--pink);
+  transform: rotate(-1.2deg) scale(0.92);
+  transition: transform 0.28s cubic-bezier(0.15, 0.8, 0.25, 1.2);
+}
+
+.modal-shell.open .mail-window {
+  transform: rotate(-0.5deg) scale(1);
+}
+
+.window-header {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 16px;
+  background: var(--blue);
+  color: white;
+}
+
+.window-title { font-weight: 900; letter-spacing: 1px; font-size: 12px; }
+
+.window-close {
+  width: 32px;
+  height: 32px;
+  border: 2px solid white;
+  background: var(--pink);
+  color: white;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: none;
+}
+
+.window-body { padding: 20px; }
+
+.mail-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  min-height: 55px;
+  border-bottom: 2px solid rgba(22, 44, 255, 0.2);
+}
+
+.field-label { font-size: 11px; font-weight: 900; color: var(--blue); }
+
+.mail-row input,
+.mail-row textarea {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--pink);
+  font-family: "Comic Sans MS", cursive;
+  font-weight: 700;
+  font-size: 17px;
+  cursor: text;
+}
+
+.static-mail {
+  color: var(--pink);
+  font-family: "Comic Sans MS", cursive;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.message-row { align-items: start; padding-top: 15px; }
+.message-row textarea { min-height: 120px; resize: vertical; }
+
+.mail-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 18px;
+}
+
+.tiny-status { font-size: 9px; font-weight: 900; color: var(--blue); }
+
+.send-button {
+  border: 2px solid var(--blue);
+  padding: 10px 22px;
+  background: var(--blue);
+  color: white;
+  font-family: inherit;
+  font-weight: 900;
+  cursor: none;
+  transform: rotate(-1deg);
+  transition: 0.18s ease;
+}
+
+.send-button:hover {
+  background: var(--pink);
+  transform: translateY(-3px) rotate(1deg);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .top-nav { width: 92vw; grid-template-columns: repeat(3, 1fr); }
+  .contact-stack { width: 90vw; }
+  .instagram-card { width: 48vw; }
+  .email-card { width: 82vw; }
+  .phone-card { width: 58vw; }
+  .phone-options { width: 70vw; }
+}
+
+@media (max-width: 600px) {
+  .page { padding-left: 8px; padding-right: 8px; }
+  .top-nav { height: 52px; width: calc(100vw - 16px); }
+  .nav-item { font-size: 8px; }
+  .contact-stack { width: 94vw; height: 380px; }
+  .instagram-card { width: 60vw; }
+  .email-card { width: 89vw; top: 115px; }
+  .phone-card { width: 70vw; top: 220px; }
+  .phone-options { top: 300px; width: 86vw; }
+  .fragment { display: none; }
+}
+
+@media (pointer: coarse) {
+  body, .contact-card, .phone-option, .send-button, .window-close { cursor: auto; }
+  .cursor, .cursor-dot { display: none; }
+}

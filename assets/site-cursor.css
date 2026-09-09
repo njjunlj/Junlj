@@ -1,0 +1,106 @@
+/* Shared custom cursor — exact visual language from the Landing page. */
+.site-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #111;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 50000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    width .12s steps(2),
+    height .12s steps(2),
+    border-radius .12s ease,
+    background .12s ease,
+    opacity .12s ease;
+  will-change: left, top;
+}
+
+.site-cursor.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-cursor::before,
+.site-cursor::after {
+  content: "";
+  position: absolute;
+  background: #111;
+}
+
+.site-cursor::before {
+  width: 28px;
+  height: 1px;
+  left: -4px;
+  top: 50%;
+}
+
+.site-cursor::after {
+  width: 1px;
+  height: 28px;
+  top: -4px;
+  left: 50%;
+}
+
+.site-cursor > span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  left: 50%;
+  top: 50%;
+  background: #ff3c91;
+  transform: translate(-50%, -50%);
+}
+
+.site-cursor-label {
+  position: absolute;
+  left: 22px;
+  top: 16px;
+  padding: 2px 4px;
+  border: 1px solid rgba(0, 0, 0, .18);
+  background: #f7f6f0;
+  color: #111;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 5px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: .1em;
+  white-space: nowrap;
+  opacity: .65;
+}
+
+/* Keep the old page-specific cursor code harmless while preserving page JS. */
+.use-site-cursor .custom-cursor,
+.use-site-cursor .cursor:not(.site-cursor),
+.use-site-cursor .cursor-dot {
+  display: none !important;
+}
+
+.use-site-cursor .site-cursor {
+  display: block !important;
+}
+
+body.use-site-cursor,
+body.use-site-cursor a,
+body.use-site-cursor button,
+body.use-site-cursor input,
+body.use-site-cursor textarea,
+body.use-site-cursor [role="button"] {
+  cursor: none !important;
+}
+
+@media (any-pointer: none) {
+  .use-site-cursor .site-cursor {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-cursor {
+    transition: opacity .12s ease;
+  }
+}
